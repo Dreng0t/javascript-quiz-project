@@ -24,4 +24,29 @@ class Quiz {
     getQuestion() {
         return this.questions[this.currentQuestionIndex];
     }
+
+    moveToNextQuestion(){
+        return this.currentQuestionIndex++;
+    }
+
+    shuffleQuestions() {
+        for (let i = this.questions.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1)); // Pick a random index from 0 to i
+            [this.questions[i], this.questions[j]] = [this.questions[j], this.questions[i]]; // Swap
+        }
+    }
+
+    checkAnswer(answer){
+        if (answer){
+            return this.correctAnswers++;
+        }
+    }
+
+    hasEnded(){
+        if (this.currentQuestionIndex < this.questions.length){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }
