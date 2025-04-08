@@ -49,4 +49,39 @@ class Quiz {
             return true;
         }
     }
+
+    filterQuestionsByDifficulty(difficulty) {
+        if (typeof difficulty !== "number" || difficulty < 1 || difficulty > 3){
+            return;
+        }
+        
+        this.questions = this.questions.filter((question) => {
+            return question.difficulty === difficulty;
+        })
+    }
+
+    averageDifficulty() {
+        const total = this.questions.reduce((sum, question) => {
+            return sum + question.difficulty;
+        }, 0)
+
+        return total/(this.questions.length);
+    }
 }
+
+
+
+
+
+/*
+function countYearsInOffice(presidentsArr) {
+  return presidentsArr.reduce((sum, president) => {
+    if (president.leftOffice === null) {
+      return sum;
+    }
+
+    return sum + (president.leftOffice - president.tookOffice);
+  }, 0);
+}
+
+*/
