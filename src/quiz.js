@@ -1,17 +1,5 @@
 class Quiz {
-    // YOUR CODE HERE:
-    //
-    // 1. constructor (questions, timeLimit, timeRemaining)
-
-    // 2. getQuestion()
     
-    // 3. moveToNextQuestion()
-
-    // 4. shuffleQuestions()
-
-    // 5. checkAnswer(answer)
-
-    // 6. hasEnded()
     constructor(questions, timeLimit, timeRemaining){
         this.questions = questions;
         this.timeLimit = timeLimit;
@@ -68,20 +56,3 @@ class Quiz {
         return total/(this.questions.length);
     }
 }
-
-
-
-
-
-/*
-function countYearsInOffice(presidentsArr) {
-  return presidentsArr.reduce((sum, president) => {
-    if (president.leftOffice === null) {
-      return sum;
-    }
-
-    return sum + (president.leftOffice - president.tookOffice);
-  }, 0);
-}
-
-*/

@@ -1,9 +1,5 @@
 class Question {
-    // YOUR CODE HERE:
-    //
-    // 1. constructor (text, choices, answer, difficulty)
 
-    // 2. shuffleChoices()
     constructor(text, choice, answer, difficulty){
         this.text = text;
         this.choices = choice;
