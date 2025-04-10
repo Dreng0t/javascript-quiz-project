@@ -55,11 +55,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Show first question
   showQuestion();
+  
+
 
 
   /************  TIMER  ************/
 
   let timer;
+
+  function startCountDown() {
+    timer = setInterval(() => {
+      quiz.timeRemaining--;
+      let minutesNew = Math.floor(quiz.timeRemaining / 60).toString().padStart(2, "0");
+      let secondsNew = (quiz.timeRemaining % 60).toString().padStart(2, "0");
+      console.log("WTF")
+      timeRemainingContainer.innerText = `${minutesNew}:${secondsNew}`;
+      if (quiz.timeRemaining === 0) {
+        clearInterval(timer);
+        showResults();
+      }
+    }, 1000);
+  }
+
+  startCountDown();
+  
+
 
 
   /************  EVENT LISTENERS  ************/
@@ -171,12 +191,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function restartButtonHandler() {
+    quiz.timeRemaining = quizDuration;
     quiz.currentQuestionIndex = 0;
     quiz.correctAnswers = 0;
     quiz.shuffleQuestions();
     showQuestion();
+    startCountDown();
     quizView.style.display = "block";
     endView.style.display = "none";
+
   }
 
 
@@ -187,6 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // YOUR CODE HERE:
     //
     // 1. Hide the quiz view (div#quizView)
+    clearInterval(timer);
     quizView.style.display = "none";
 
     // 2. Show the end view (div#endView)
